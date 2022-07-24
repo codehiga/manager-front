@@ -1,5 +1,5 @@
-import { useContext } from "react"
-import { Link } from "react-router-dom";
+import { useContext, useEffect } from "react"
+import { Link, useLocation, useRoutes } from "react-router-dom";
 import { ThemeColorContext } from "../../contexts/ThemeColorContext"
 import colorsVariables from "../../utils/colors-variables"
 import menuItems from "../../utils/menu-items";
@@ -7,7 +7,12 @@ import menuItems from "../../utils/menu-items";
 export const Navbar = () => {
 
   const { theme } = useContext(ThemeColorContext);
+  const { pathname } = useLocation();
   
+
+  useEffect(() => {
+    console.log(pathname)
+  }, [pathname])
 
   return(
     <div
@@ -25,7 +30,20 @@ export const Navbar = () => {
 
           if(item.active){
             return(
-              <Link className="p-2 rounded-md flex items-center hover:bg-zinc-700 transition-all text-slate-200" key={item.name} to={item.path}>
+              <Link 
+                className={
+                  `p-2 
+                  rounded-md 
+                  flex 
+                  items-center 
+                  hover:bg-zinc-700 
+                  transition-all 
+                  text-slate-200 
+                  ${pathname === item.path  ? 'bg-zinc-700 ' : ''}`
+                } 
+                key={item.name} 
+                to={item.path}
+              >
                 {item.name}
               </Link>
             )

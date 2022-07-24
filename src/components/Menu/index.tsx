@@ -16,7 +16,7 @@ export const Menu = () => {
 
       <div>
         <span>
-          <input type="text" className="rounded-full px-2" />
+          <input type="text" className="p-1 bg-neutral-600" />
         </span>
       </div>
 
