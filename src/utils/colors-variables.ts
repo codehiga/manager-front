@@ -13,7 +13,7 @@ export default {
     DARK : '#393A3D'
   },
   COLOR_SECONDARY : {
-    LIGHT : '',
+    LIGHT : '#ff7d1a',
     DARK : '#23252A'
   },
   COLOR_ITEMS_MAIN : {

@@ -1,55 +1,47 @@
-import { useContext, useEffect } from "react"
-import { Link, useLocation, useRoutes } from "react-router-dom";
-import { ThemeColorContext } from "../../contexts/ThemeColorContext"
+import { useThemeColorHook } from "../../hooks/ThemeColorHook"
 import colorsVariables from "../../utils/colors-variables"
-import menuItems from "../../utils/menu-items";
+import { ButtonChangeTheme } from "../ButtonChangeTheme";
+import { MoonSVG, SunSVG } from "../../utils/svgs";
 
 export const Navbar = () => {
 
-  const { theme } = useContext(ThemeColorContext);
-  const { pathname } = useLocation();
-  
-
-  useEffect(() => {
-    console.log(pathname)
-  }, [pathname])
+  const { theme } = useThemeColorHook();
 
   return(
     <div
-      style={{
-        backgroundColor : colorsVariables.COLOR_MAIN[theme],
-        width : "250px"
-      }}
-      className="min-h-full flex flex-col"
-    >
-      <div className="h-12 flex justify-center items-center bg-zinc-800 text-white">
-        <b>CMS</b>
-      </div>
-      <div style={{height:'calc(100% - 48px)'}} className="p-2 flex flex-col gap-2">
-        {menuItems.labels.map((item) => {
+    style={{
+      backgroundColor : colorsVariables.COLOR_SECONDARY[theme]
+    }}
+    className="h-12 w-full flex justify-between p-2 items-center">
 
-          if(item.active){
-            return(
-              <Link 
-                className={
-                  `p-2 
-                  rounded-md 
-                  flex 
-                  items-center 
-                  hover:bg-zinc-700 
-                  transition-all 
-                  text-slate-200 
-                  ${pathname === item.path  ? 'bg-zinc-700 ' : ''}`
-                } 
-                key={item.name} 
-                to={item.path}
-              >
-                {item.name}
-              </Link>
-            )
-          }
-          
-        })}
+      <div>
+        <span>
+          <input type="text" className="p-1 bg-neutral-600" />
+        </span>
+      </div>
+
+
+      <div className="flex gap-6 items-center">
+
+      
+        <span>
+          <ButtonChangeTheme>
+            { theme === "DARK" ? <SunSVG /> : <MoonSVG /> }
+          </ButtonChangeTheme>
+        </span>
+
+        <span className="flex items-center gap-2">
+          <span className="flex flex-col items-start leading-4">
+            <b>Henrique Higa</b>
+            <p>Desenvolvedor</p>
+          </span>
+          <span className="h-7 w-7 bg-white rounded-full"></span>
+        </span>
+
+
+        <span>
+          <button>Sair</button>
+        </span>
       </div>
     </div>
   )

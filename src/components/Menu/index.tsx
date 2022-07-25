@@ -1,47 +1,76 @@
-import { useThemeColorHook } from "../../hooks/ThemeColorHook"
+import { useContext, useEffect } from "react"
+import { Link, useLocation, useRoutes } from "react-router-dom";
+import { ThemeColorContext } from "../../contexts/ThemeColorContext"
 import colorsVariables from "../../utils/colors-variables"
-import { ButtonChangeTheme } from "../ButtonChangeTheme";
-import { MoonSVG, SunSVG } from "../../utils/svgs";
+import menuItems from "../../utils/menu-items";
 
 export const Menu = () => {
 
-  const { theme } = useThemeColorHook();
+  const { theme } = useContext(ThemeColorContext);
+  const { pathname } = useLocation();
+  
+
+  useEffect(() => {
+    console.log(pathname)
+  }, [pathname])
 
   return(
     <div
-    style={{
-      backgroundColor : colorsVariables.COLOR_SECONDARY[theme]
-    }}
-    className="h-12 w-full flex justify-between p-2 items-center">
-
-      <div>
-        <span>
-          <input type="text" className="p-1 bg-neutral-600" />
-        </span>
+      style={{
+        backgroundColor : colorsVariables.COLOR_MAIN[theme],
+        width : "250px"
+      }}
+      className="min-h-full flex flex-col"
+    >
+      <div className="h-12 flex justify-center items-center bg-zinc-800 text-white">
+        <b>CMS</b>
       </div>
+      <div style={{height:'calc(100% - 48px)'}} className="p-2 flex flex-col gap-2">
+        {menuItems.labels.map((item) => {
 
-
-      <div className="flex gap-6 items-center">
-
-      
-        <span>
-          <ButtonChangeTheme>
-            { theme === "DARK" ? <SunSVG /> : <MoonSVG /> }
-          </ButtonChangeTheme>
-        </span>
-
-        <span className="flex items-center gap-2">
-          <span className="flex flex-col items-start leading-4">
-            <b>Henrique Higa</b>
-            <p>Desenvolvedor</p>
-          </span>
-          <span className="h-7 w-7 bg-white rounded-full"></span>
-        </span>
-
-
-        <span>
-          <button>Sair</button>
-        </span>
+          if(item.active){
+            return(
+              <>
+                <Link 
+                  className={
+                    `p-2 
+                    rounded-md 
+                    flex 
+                    items-center 
+                    hover:bg-zinc-700 
+                    transition-all 
+                    text-slate-200 
+                    ${pathname === item.path  ? 'bg-zinc-700 ' : ''}`
+                  } 
+                  key={item.name} 
+                  to={item.path}
+                >
+                  {item.name}
+                </Link>
+                { 
+                  item.sub && item.sub.map((sub) => (
+                    <Link className={
+                      `p-2 
+                      rounded-md 
+                      flex 
+                      items-center 
+                      hover:bg-zinc-700 
+                      transition-all 
+                      text-slate-200
+                      indent-4
+                      ${pathname === sub.path  ? 'bg-zinc-700 ' : ''}`
+                      }
+                      key={sub.name} 
+                      to={sub.path}>
+                        {'>'} {sub.name}
+                    </Link>
+                  ))
+                }
+              </>
+            )
+          }
+          
+        })}
       </div>
     </div>
   )
