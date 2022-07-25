@@ -2,6 +2,7 @@ import { useThemeColorHook } from "../../hooks/ThemeColorHook"
 import colorsVariables from "../../utils/colors-variables"
 import { ButtonChangeTheme } from "../ButtonChangeTheme";
 import { MoonSVG, SunSVG } from "../../utils/svgs";
+import { FileSearch, MagnifyingGlass } from "phosphor-react";
 
 export const Navbar = () => {
 
@@ -14,9 +15,12 @@ export const Navbar = () => {
     }}
     className="h-12 w-full flex justify-between p-2 items-center">
 
-      <div>
-        <span>
-          <input type="text" className="p-1 bg-neutral-600" />
+      <div className="flex">
+        <span className="flex items-center">
+          <input type="text" className="p-1 bg-neutral-600 outline-none" />
+          <span className="bg-stone-800 w-8 h-full flex justify-center items-center rounded-r-md">
+            <MagnifyingGlass color="#fff" size={20} />
+          </span>
         </span>
       </div>
 

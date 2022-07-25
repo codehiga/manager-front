@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { Navbar } from './components/Navbar'
 import { AppRoutes } from './routes'
 import { ThemeColorProvider } from './contexts/ThemeColorContext'
 import './index.css'
