@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <MenuLateral />
         <div className="w-full h-full flex flex-col bg-[#FBFBFB]">
           <Navbar />
-          <div className="w-full h-full px-6 overflow-auto">
+          <div className="w-full h-full px-6 pt-6 overflow-auto">
             <AppRoutes />
           </div>
         </div>
