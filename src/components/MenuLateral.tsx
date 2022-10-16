@@ -1,11 +1,18 @@
 import { SignOut } from "phosphor-react";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useAlternaMenu } from "../hooks/useAlternaMenu";
 import { pages } from "../utils/Pages";
 
 export const MenuLateral = () => {
+  const { ativo } = useAlternaMenu();
+
   return (
-    <div className="w-[325px] h-full border-r-[1px] p-4 flex flex-col gap-2">
+    <div
+      className={`w-[325px] h-full border-r-[1px] p-4  flex-col gap-2 absolute bg-white md:static z-50 ${
+        ativo == true ? "flex" : "hidden"
+      }`}
+    >
       <div className="w-full h-20 text-center">
         <h1 className="text-2xl">Manager</h1>
         <small>Description</small>

@@ -1,11 +1,12 @@
 import { Route, Routes } from "react-router-dom";
-import { Inicio } from "./pages/Inicio";
+import { pages } from "./utils/Pages";
 
 export const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Inicio />} />
-      <Route path="/servicos" element={<Inicio />} />
+      {pages.map((pagina) => {
+        return <Route element={pagina.componente} path={pagina.url} />;
+      })}
     </Routes>
   );
 };

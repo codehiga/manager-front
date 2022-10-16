@@ -1,14 +1,16 @@
-import { Bell, List, MagnifyingGlass } from "phosphor-react";
+import { Bell, List, MagnifyingGlass, X } from "phosphor-react";
 import { useState } from "react";
+import { useAlternaMenu } from "../hooks/useAlternaMenu";
 
 export const Navbar = () => {
   const [notification, setNotification] = useState();
+  const { alternaMenu, ativo } = useAlternaMenu();
 
   return (
     <div className="w-full h-20 px-6 border-b-[1px]">
       <div className="w-full h-full flex items-center gap-4 justify-between">
-        <div>
-          <List size={24} width="fill" />
+        <div onClick={alternaMenu} className="cursor-pointer">
+          {ativo == true ? <X size={24} /> : <List size={24} width="fill" />}
         </div>
         <div className="w-[70%] h-full flex items-center justify-end gap-4">
           <div className="w-auto h-full flex items-center">
