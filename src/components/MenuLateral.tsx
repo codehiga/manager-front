@@ -5,13 +5,17 @@ import { useAlternaMenu } from "../hooks/useAlternaMenu";
 import { pages } from "../utils/Pages";
 
 export const MenuLateral = () => {
-  const { ativo } = useAlternaMenu();
+  const { ativo, alternaMenu } = useAlternaMenu();
+
+  useEffect(() => {
+    window.addEventListener("click", (e) => {});
+  }, []);
 
   return (
     <div
       className={`w-[325px] h-full border-r-[1px] p-4  flex-col gap-2 absolute bg-white md:static z-50 ${
         ativo == true ? "flex" : "hidden"
-      }`}
+      } menu-lateral`}
     >
       <div className="w-full h-20 text-center">
         <h1 className="text-2xl">Manager</h1>
@@ -76,7 +80,7 @@ const ItemMenuLateral = ({
         click(url);
       }}
     >
-      <Link to={url} className="w-full h-full flex gap-4 items-center px-4 ">
+      <Link to={url} className="w-full h-full flex gap-4 items-center px-4">
         {icone}
         {titulo}
       </Link>
