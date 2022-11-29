@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useState } from "react";
 
 export const Cadastro = () => {
-  const [formularioAtual, setFormularioAtual] = useState<string>("cliente");
+  const [formularioAtual, setFormularioAtual] = useState<string>("");
   const [dados, setDados] = useState({});
 
   function handleAlteraTexto(evt: any) {
@@ -47,19 +47,16 @@ export const Cadastro = () => {
               Selecione um tipo de cadastro
             </option>
             <option value="cliente">Cliente</option>
-            <option value="projeto">Projeto</option>
-            <option value="categoria">Categoria</option>
-            <option value="produto">Produto</option>
           </select>
         </label>
 
         {forms.map((form) => {
           if (form.id == formularioAtual) {
-            return form.componente;
+            return <div key={form.id}>{form.componente}</div>;
           }
         })}
 
-        <button>Enviar</button>
+        {formularioAtual != "" && <button>Enviar</button>}
       </form>
     </div>
   );

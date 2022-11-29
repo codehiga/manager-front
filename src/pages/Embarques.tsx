@@ -1,4 +1,4 @@
-export const Vendas = () => {
+export const Embarques = () => {
   return (
     <div className="w-full h-full flex flex-col gap-2">
       <div className="w-full h-20 bg-black">a</div>

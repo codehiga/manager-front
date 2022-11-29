@@ -5,7 +5,13 @@ export const AppRoutes = () => {
   return (
     <Routes>
       {pages.map((pagina) => {
-        return <Route element={pagina.componente} path={pagina.url} />;
+        return (
+          <Route
+            key={pagina.titulo}
+            element={pagina.componente}
+            path={pagina.url}
+          />
+        );
       })}
     </Routes>
   );

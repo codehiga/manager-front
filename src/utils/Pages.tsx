@@ -1,8 +1,8 @@
 import { BagSimple, HouseSimple, Pen, Person } from "phosphor-react";
 import { Cadastro } from "../pages/Cadastro";
 import { Clientes } from "../pages/Clientes";
+import { Embarques } from "../pages/Embarques";
 import { Inicio } from "../pages/Inicio";
-import { Vendas } from "../pages/Vendas";
 
 export const pages = [
   {
@@ -12,10 +12,10 @@ export const pages = [
     componente: <Inicio />,
   },
   {
-    titulo: "Vendas",
-    url: "/vendas",
-    icone: <BagSimple weight="fill" size={24} />,
-    componente: <Vendas />,
+    titulo: "Cadastro",
+    url: "/cadastro",
+    icone: <Pen weight="fill" size={24} />,
+    componente: <Cadastro />,
   },
   {
     titulo: "Clientes",
@@ -24,9 +24,9 @@ export const pages = [
     componente: <Clientes />,
   },
   {
-    titulo: "Cadastro",
-    url: "/cadastro",
-    icone: <Pen weight="fill" size={24} />,
-    componente: <Cadastro />,
+    titulo: "Embarques",
+    url: "/embarques",
+    icone: <BagSimple weight="fill" size={24} />,
+    componente: <Embarques />,
   },
 ];

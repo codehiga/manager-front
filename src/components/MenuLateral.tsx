@@ -13,13 +13,19 @@ export const MenuLateral = () => {
 
   return (
     <div
-      className={`w-[325px] h-full border-r-[1px] p-4  flex-col gap-2 absolute bg-white md:static z-50 ${
+      className={`w-full md:max-w-[325px] h-full border-r-[1px] p-4  flex-col gap-2 absolute bg-white md:static z-50 ${
         ativo == true ? "flex" : "hidden"
       } menu-lateral`}
     >
-      <div className="w-full h-20 text-center">
+      <div className="w-full h-20 text-center relative">
         <h1 className="text-2xl">Manager</h1>
         <small>Description</small>
+        <b
+          onClick={alternaMenu}
+          className="absolute right-0 top-0 text-2xl block md:hidden"
+        >
+          ×
+        </b>
       </div>
       <RetornaMenu />
       <div className="w-full  h-10 min-h-[2.5rem] bg-red-600 rounded-md flex justify-between text-white cursor-pointer hover:brightness-125 transition-all font-semibold items-center px-4 gap-2">
@@ -71,17 +77,19 @@ const ItemMenuLateral = ({
   url,
   click,
 }: ItemMenuLateralProps) => {
+  const { alternaMenu } = useAlternaMenu();
+
   return (
     <div
-      className={`w-full h-10 min-h-[2.5rem] hover:bg-gray-600 hover:text-white transition-all cursor-pointer rounded-md ${
-        ativa && "bg-gray-600 text-white"
+      className={`w-full h-10 min-h-[2.5rem] hover:text-xl transition-all cursor-pointer rounded-md ${
+        ativa && "text-xl"
       }`}
       onClick={() => {
+        alternaMenu();
         click(url);
       }}
     >
       <Link to={url} className="w-full h-full flex gap-4 items-center px-4">
-        {icone}
         {titulo}
       </Link>
     </div>
