@@ -4,11 +4,10 @@ export const Cadastro = () => {
   const [formularioAtual, setFormularioAtual] = useState<string>("");
   const [dados, setDados] = useState({});
 
-  function handleAlteraTexto(evt: any) {
-    const value = evt.target.value;
+  function handleAlteraTexto(evt: React.ChangeEvent<HTMLInputElement>) {
     setDados({
       ...dados,
-      [evt.target.name]: value,
+      [evt.target.name]: evt.target.value,
     });
   }
 
@@ -37,7 +36,6 @@ export const Cadastro = () => {
           <select
             onChange={(e) => {
               setFormularioAtual(e.target.value);
-              setDados(e);
             }}
             name="tipo"
             defaultValue="no"
@@ -70,9 +68,9 @@ const ClienteForm = ({ setDados }: IFormProps) => {
   return (
     <div className="w-full h-full grid grid-cols-1 md:grid-cols-3 gap-4">
       <label className="flex flex-col">
-        <p>Representante:</p>
+        <p>Nome:</p>
         <input
-          name="representante"
+          name="nome"
           onChange={(e) => setDados(e)}
           type="text"
           className="p-2 border"
